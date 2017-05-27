@@ -36,15 +36,16 @@ namespace PairGame
 		// Назначаем каждую иконку из листа случайным квадратикам
 		private void AssignIconsTSquares()
 		{
+			// Новая коллекция чтобы не затереть первоначальную (для повторной игры)
+			List<string> gameIcons = new List<string>(icons);
 			foreach (Control control in tableLayoutPanel1.Controls)
-			{
-
+			{				
 				if (control is Label iconLabel)
 				{
-					int randomNumber = random.Next(icons.Count);
-					iconLabel.Text = icons[randomNumber];
+					int randomNumber = random.Next(gameIcons.Count);
+					iconLabel.Text = gameIcons[randomNumber];
 					iconLabel.ForeColor = iconLabel.BackColor;
-					icons.RemoveAt(randomNumber);
+					gameIcons.RemoveAt(randomNumber);
 				}
 			}
 		}
@@ -53,6 +54,11 @@ namespace PairGame
 		{
 			InitializeComponent();
 
+			AssignIconsTSquares();
+		}
+
+		private void Init()
+		{
 			AssignIconsTSquares();
 		}
 
@@ -158,7 +164,8 @@ namespace PairGame
 			// Если цикл не сделал return, значит все иконки открыты
 			_soundWin.Play();
 			MessageBox.Show("Вы сопоставили все картинки!", "Поздравляем!");
-			Close();
+			Init();
+			//Close();
 		}
 	}
 }
