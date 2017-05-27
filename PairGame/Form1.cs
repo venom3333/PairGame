@@ -34,9 +34,8 @@ namespace PairGame
 		};
 
 		// Назначаем каждую иконку из листа случайным квадратикам
-		private void AssignIconsTSquares()
+		private void AssignIconsToSquares()
 		{
-			MessageBox.Show("После нажатия ОК, игра покажет Вам все картинки в течение 5 секунд, будьте внимательны!", "Начинаем!");
 			// Новая коллекция чтобы не затереть первоначальную (для повторной игры)
 			List<string> gameIcons = new List<string>(icons);
 			foreach (Control control in tableLayoutPanel1.Controls)
@@ -45,7 +44,7 @@ namespace PairGame
 				{
 					int randomNumber = random.Next(gameIcons.Count);
 					iconLabel.Text = gameIcons[randomNumber];
-					//iconLabel.ForeColor = iconLabel.BackColor;
+					iconLabel.ForeColor = Color.DarkSlateBlue;
 					gameIcons.RemoveAt(randomNumber);
 				}
 			}
@@ -57,13 +56,14 @@ namespace PairGame
 		public Form1()
 		{
 			InitializeComponent();
-
-			AssignIconsTSquares();
+			tableLayoutPanel1.Visible = false;
 		}
 
 		private void Init()
 		{
-			AssignIconsTSquares();
+			tableLayoutPanel1.Visible = false;
+			buttonStart.Visible = true;
+			//AssignIconsToSquares();
 		}
 
 		/// <summary>
@@ -81,7 +81,7 @@ namespace PairGame
 
 			if (sender as Label != null)
 			{
-				if ((sender as Label).ForeColor == Color.Black)
+				if ((sender as Label).ForeColor == Color.DarkSlateBlue)
 				{
 					return;
 				}
@@ -91,7 +91,7 @@ namespace PairGame
 				if (firstClicked == null)
 				{
 					firstClicked = sender as Label;
-					firstClicked.ForeColor = Color.Black;
+					firstClicked.ForeColor = Color.DarkSlateBlue;
 
 					return;
 				}
@@ -102,7 +102,7 @@ namespace PairGame
 			// играем звук и делаем ее черной
 			_soundPair.Play();
 			secondClicked = sender as Label;
-			secondClicked.ForeColor = Color.Black;
+			secondClicked.ForeColor = Color.DarkSlateBlue;
 
 			// Проверяем все ли картинки открыты
 			CheckForWinner();
@@ -186,6 +186,13 @@ namespace PairGame
 					iconLabel.ForeColor = iconLabel.BackColor;
 				}
 			}
+		}
+
+		private void ButtonStart_Click(object sender, EventArgs e)
+		{
+			buttonStart.Visible = false;
+			tableLayoutPanel1.Visible = true;
+			AssignIconsToSquares();
 		}
 	}
 }

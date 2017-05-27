@@ -68,12 +68,13 @@
 			this.label50 = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.TimerShowAll = new System.Windows.Forms.Timer(this.components);
+			this.buttonStart = new System.Windows.Forms.Button();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.BackColor = System.Drawing.Color.CornflowerBlue;
+			this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
 			this.tableLayoutPanel1.ColumnCount = 6;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -615,12 +616,23 @@
 			// 
 			this.TimerShowAll.Tick += new System.EventHandler(this.TimerShowAll_Tick);
 			// 
+			// buttonStart
+			// 
+			this.buttonStart.Location = new System.Drawing.Point(0, 0);
+			this.buttonStart.Name = "buttonStart";
+			this.buttonStart.Size = new System.Drawing.Size(684, 661);
+			this.buttonStart.TabIndex = 1;
+			this.buttonStart.Text = "После нажатия игра покажет Вам все картинки на 5 секунд.";
+			this.buttonStart.UseVisualStyleBackColor = true;
+			this.buttonStart.Click += new System.EventHandler(this.ButtonStart_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(684, 661);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.Controls.Add(this.buttonStart);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "Form1";
 			this.Text = "Подбери пару";
@@ -670,6 +682,7 @@
 		private System.Windows.Forms.Label label49;
 		private System.Windows.Forms.Label label50;
 		private System.Windows.Forms.Timer TimerShowAll;
+		private System.Windows.Forms.Button buttonStart;
 	}
 }
 
