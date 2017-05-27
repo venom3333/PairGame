@@ -36,6 +36,7 @@ namespace PairGame
 		// Назначаем каждую иконку из листа случайным квадратикам
 		private void AssignIconsTSquares()
 		{
+			MessageBox.Show("После нажатия ОК, игра покажет Вам все картинки в течение 5 секунд, будьте внимательны!", "Начинаем!");
 			// Новая коллекция чтобы не затереть первоначальную (для повторной игры)
 			List<string> gameIcons = new List<string>(icons);
 			foreach (Control control in tableLayoutPanel1.Controls)
@@ -44,10 +45,13 @@ namespace PairGame
 				{
 					int randomNumber = random.Next(gameIcons.Count);
 					iconLabel.Text = gameIcons[randomNumber];
-					iconLabel.ForeColor = iconLabel.BackColor;
+					//iconLabel.ForeColor = iconLabel.BackColor;
 					gameIcons.RemoveAt(randomNumber);
 				}
 			}
+			// Таймер до скрытия иконок в начале
+			TimerShowAll.Interval = 5000;
+			TimerShowAll.Start();
 		}
 
 		public Form1()
@@ -165,7 +169,23 @@ namespace PairGame
 			_soundWin.Play();
 			MessageBox.Show("Вы сопоставили все картинки!", "Поздравляем!");
 			Init();
-			//Close();
+		}
+
+
+		// Таймер для показа всех картинок в начале
+		private void TimerShowAll_Tick(object sender, EventArgs e)
+		{
+			// Остановить таймер
+			TimerShowAll.Stop();
+
+			// Прячем все картинки
+			foreach (Control control in tableLayoutPanel1.Controls)
+			{
+				if (control is Label iconLabel)
+				{
+					iconLabel.ForeColor = iconLabel.BackColor;
+				}
+			}
 		}
 	}
 }

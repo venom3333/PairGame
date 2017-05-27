@@ -67,6 +67,7 @@
 			this.label49 = new System.Windows.Forms.Label();
 			this.label50 = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.TimerShowAll = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -610,6 +611,10 @@
 			// 
 			this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
 			// 
+			// TimerShowAll
+			// 
+			this.TimerShowAll.Tick += new System.EventHandler(this.TimerShowAll_Tick);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -664,6 +669,7 @@
 		private System.Windows.Forms.Label label48;
 		private System.Windows.Forms.Label label49;
 		private System.Windows.Forms.Label label50;
+		private System.Windows.Forms.Timer TimerShowAll;
 	}
 }
 
