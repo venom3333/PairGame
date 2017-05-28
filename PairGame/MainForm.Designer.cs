@@ -1,6 +1,6 @@
 ﻿namespace PairGame
 {
-	partial class Form1
+	partial class MainForm
 	{
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -626,7 +626,7 @@
 			this.buttonStart.UseVisualStyleBackColor = true;
 			this.buttonStart.Click += new System.EventHandler(this.ButtonStart_Click);
 			// 
-			// Form1
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -634,7 +634,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.buttonStart);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Name = "Form1";
+			this.Name = "MainForm";
 			this.Text = "Подбери пару";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);

@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Collections;
 
 namespace PairGame
 {
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
 		// Звуки
 		SoundPlayer _soundWin = new SoundPlayer("win.wav");
@@ -53,7 +54,7 @@ namespace PairGame
 			TimerShowAll.Start();
 		}
 
-		public Form1()
+		public MainForm()
 		{
 			InitializeComponent();
 			tableLayoutPanel1.Visible = false;
