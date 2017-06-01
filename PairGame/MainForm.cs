@@ -7,17 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;
 using System.Collections;
-
+using AudioEngine;
 namespace PairGame
 {
 	public partial class MainForm : Form
 	{
 		// Звуки
-		SoundPlayer _soundWin = new SoundPlayer("win.wav");
-		SoundPlayer _soundPair = new SoundPlayer("pair.wav");
-		SoundPlayer _soundWrong = new SoundPlayer("wrong.wav");
+		CachedSound soundWin = new CachedSound("win.wav");
+		CachedSound soundPair = new CachedSound("pair.wav");
+		CachedSound soundWrong = new CachedSound("wrong.wav");
 
 		Label firstClicked = null;
 
@@ -100,8 +99,8 @@ namespace PairGame
 
 			// Если программа дошла до сюда, значит таймер не включен, и firstClicked не null,
 			// следовательно это клик по второй иконке пары
-			// играем звук и делаем ее черной
-			_soundPair.Play();
+			// делаем ее видимой
+			
 			secondClicked = sender as Label;
 			secondClicked.ForeColor = Color.DarkSlateBlue;
 
@@ -114,13 +113,14 @@ namespace PairGame
 			{
 				firstClicked = null;
 				secondClicked = null;
-
+				// играем звук
+				AudioPlaybackEngine.Instance.PlaySound(soundPair);
 				return;
 			}
 
 			// Если программа дошла до сюда, значит игрок ткнул две разные иконки,
 			// играем звук и стартуем таймер
-			_soundWrong.Play();
+			AudioPlaybackEngine.Instance.PlaySound(soundWrong);
 			timer1.Start();
 		}
 
@@ -167,7 +167,7 @@ namespace PairGame
 			}
 
 			// Если цикл не сделал return, значит все иконки открыты
-			_soundWin.Play();
+			AudioPlaybackEngine.Instance.PlaySound(soundWin);
 			MessageBox.Show("Вы сопоставили все картинки!", "Поздравляем!");
 			Init();
 		}
